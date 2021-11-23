@@ -36,7 +36,6 @@ function loadDoc() {
             // Now convert it into array using regex
             array = text.split(/\r?\n|\r/g);
             randomNoRepeats(array);
-            console.log(winNum);
             odometer.update(winNum);
         }
     }
@@ -50,7 +49,7 @@ function loadDoc() {
 
 function start() {
     loadDoc();
-    setTimeout(winningText, 15000);
+    // setTimeout(winningText, 15000);
 }
 
 function reset() {
