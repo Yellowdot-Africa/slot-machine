@@ -1,6 +1,8 @@
 var array = [];
 var copy = [...array]; //Make a copy of original array
 var winNum;
+let msisdn;
+let prize;
 var resetNum = 10000000000;
 var xmlhttp;
 const subOdometer = document.querySelector('.sub-odometer');
@@ -22,34 +24,54 @@ const odometer = new Odometer({
     value: 10000000000
 });
 
-if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp = new XMLHttpRequest();
-} else { // code for IE6, IE5
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+// if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+//     xmlhttp = new XMLHttpRequest();
+// } else { // code for IE6, IE5
+//     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+// }
+
+// function loadDoc() {
+//     xmlhttp.onreadystatechange = function() {
+//         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//             var text = xmlhttp.responseText;
+
+//             // Now convert it into array using regex
+//             array = text.split(/\r?\n|\r/g);
+//             console.log(array);
+//             randomNoRepeats(array);
+//             odometer.update(winNum);
+//         }
+//     }
+
+//     xmlhttp.open("GET", "/assets/msisdn.txt", true);
+//     xmlhttp.send();
+// }
+
+async function getWinner(){
+
+    const winner = await fetch(`https://slot-machine-be.herokuapp.com`, {
+
+        method: 'GET',
+
+        headers: {
+
+            'Accept': 'application/json',
+
+            'Content-Type': 'application/json'
+
+        },
+
+    }).then((data) => data.json());
+    msisdn = winner.doc.msisdn;
+    odometer.update(msisdn);
+    return winner;
 }
 
-function loadDoc() {
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var text = xmlhttp.responseText;
-
-            // Now convert it into array using regex
-            array = text.split(/\r?\n|\r/g);
-            randomNoRepeats(array);
-            odometer.update(winNum);
-        }
-    }
-
-    xmlhttp.open("GET", "/assets/msisdn.txt", true);
-    xmlhttp.send();
-}
 
 
-
-
-function start() {
-    loadDoc();
-    // setTimeout(winningText, 15000);
+async function start() {
+    prize = await getWinner();
+    setTimeout(winningText, 11000);
 }
 
 function reset() {
@@ -70,8 +92,9 @@ function randomNoRepeats(array) {
 };
 
 function winningText() {
+    prize = prize.doc.prize;
     const winnerText = document.querySelector('p');
-    winnerText.innerHTML = "Winning Number!!!";
+    winnerText.innerHTML = `Congratulations, you won ${prize}`;
     // confetti.start(10000, 50, 150);
     myConfetti();
 
