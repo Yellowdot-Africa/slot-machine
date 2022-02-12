@@ -80,7 +80,7 @@ function reset() {
 function winningText() {
     prize = prize.doc.prize;
     const winnerText = document.querySelector('p');
-    winnerText.innerHTML = `Congratulations, you won ${prize}`;
+    winnerText.innerHTML = `Congratulations!!!`;
     // confetti.start(10000, 50, 150);
     myConfetti();
 
