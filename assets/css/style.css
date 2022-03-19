@@ -20,9 +20,10 @@ background-repeat: no-repeat;
 
 body {
     height: 100vh;
-    background-image: url(/assets/img/ln_background-img.jpg);
+    background-image: url(/assets/img/ln_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    /* background-attachment: fixed; */
 }
 
 .info {
@@ -40,6 +41,8 @@ body {
 
 .meter-container {
     margin-bottom: 270px;
+    position: relative;
+    top: 13rem;
     /* position: absolute;
 top: 150px;
 left: 168px; */
@@ -144,11 +147,13 @@ h1 {
 }
 
 p {
-    font-size: 40px;
+    font-size: 21px;
+    text-align: center;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 8px;
     margin: 30px 388px;
-    color: white;
+    color: #000;
     font-family: "Raleway Thin", sans-serif;
 }
 
@@ -177,10 +182,10 @@ p {
 }
 
 button {
-    background-color: white;
+    background-color: #000;
     border: none;
-    color: black;
-    padding: 26px 40px;
+    color: #f1f1f1;
+    padding: 14px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -191,8 +196,8 @@ button {
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+    background-color: #575454;
+    color: #000;
 }
 
 @media screen and (max-width: 767px) {

@@ -1,10 +1,7 @@
-var array = [];
-var copy = [...array]; //Make a copy of original array
 var winNum;
 let msisdn;
 let prize;
 var resetNum = 10000000000;
-var xmlhttp;
 const subOdometer = document.querySelector('.sub-odometer');
 const rollBtn = document.querySelector('.roll-btn');
 const resetBtn = document.querySelector('.reset-btn');
@@ -79,17 +76,6 @@ function reset() {
     winnerText.innerHTML = "";
     odometer.update(resetNum);
 }
-
-//Function to select an item randomly from the array without repeating. There will be no repetition until array is exhausted
-function randomNoRepeats(array) {
-    if (copy.length < 1) {
-        copy = [...array]; //Make a copy of array if all items are exhausted
-    }
-    var index = Math.floor(Math.random() * copy.length);
-    winNum = copy[index];
-    copy.splice(index, 1);
-    return winNum;
-};
 
 function winningText() {
     prize = prize.doc.prize;
