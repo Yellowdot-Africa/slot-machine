@@ -76,7 +76,6 @@ function randomNoRepeats(array) {
 function winningText() {
     const winnerText = document.querySelector('p');
     winnerText.innerHTML = "Winner!!!";
-    // confetti.start(10000, 50, 150);
     confetti();
     return winnerText;
 }
