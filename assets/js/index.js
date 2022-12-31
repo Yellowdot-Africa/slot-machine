@@ -34,7 +34,6 @@ function loadDoc() {
             // Now convert it into array using regex
             array = text.split(/\r?\n|\r/g);
             array.map((item) => {
-                console.log(item)
                     // append('#container', item)
             })
             randomNoRepeats(array);
